@@ -1,0 +1,47 @@
+version: '3'
+
+services:
+
+  itcomp_news_mysql:
+    build:
+      context: ./docker/mysql
+    image: 'itcomp_news/itcomp_news_mysql:latest'
+    container_name: 'itcomp_news_mysql'
+    hostname: 'itcomp_news_mysql'
+    volumes:
+      - ./docker/mysql/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf:ro
+      - ./var/log/docker/mysql:/var/log/mysql:consistent
+    environment:
+      MYSQL_DATABASE: '${MYSQL_DATABASE}'
+      MYSQL_ROOT_PASSWORD: '${MYSQL_ROOT_PASSWORD}'
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+
+  itcomp_news_php:
+    build:
+      context: ./docker/php
+    image: 'itcomp_news/itcomp_news_php:latest'
+    container_name: 'itcomp_news_php'
+    hostname: 'itcomp_news_php'
+    volumes:
+      - ./:/app:consistent
+      - ./docker/php/www.conf:/usr/local/etc/php-fpm.d/www.conf:ro
+      - ./docker/php/php.ini:/usr/local/etc/php/conf.d/php.override.ini:ro
+    working_dir: /app
+
+  itcomp_news_nginx:
+    build:
+      context: ./docker/nginx
+    image: 'itcomp_news/itcomp_news_nginx:latest'
+    container_name: 'itcomp_news_nginx'
+    hostname: 'itcomp_news_nginx'
+    ports:
+      - '8081:80'
+    volumes:
+      - ./:/app:consistent
+      - ./docker/nginx/app.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./var/log/docker/nginx:/var/log/nginx:consistent
+    depends_on:
+      - itcomp_news_mysql
+      - itcomp_news_php

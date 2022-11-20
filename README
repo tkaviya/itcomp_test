@@ -1,0 +1,16 @@
+RUN THESE COMMANDS TO TEST THE APPLICATION
+
+# login to the php docker
+docker exec -it -u root itcomp_news_php /bin/bash
+
+# run migrations to create relevant DB tables
+php bin/console doctrine:migrations:migrate
+
+# run command to populate news data
+php bin/console app:refresh-articles
+
+# go to http://localhost:8081/register to register a new user
+
+# go to http://localhost:8081/login to login to the application
+
+# after login you will be automatically redirected to http://localhost:8081/articles to read your news articles

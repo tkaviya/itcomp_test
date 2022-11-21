@@ -22,7 +22,7 @@
             </h1>
 
             <p class="font-light text-gray-500 italic">
-                Articles from <a target="_blank" href="https://news.pindula.com">https://news.pindula.com</a>
+                Articles from <a target="_blank" href="https://news.pindula.co.zw">https://news.pindula.co.zw</a>
             </p>
         </div>
     </div>
@@ -46,7 +46,7 @@
                         </td>
                         <td>
                             <h2 class="text-gray-700 font-bold text-3xl py-2">
-                                {{ article.title }}
+                                <a target="_blank" href="{{ article.link }}">{{ article.title }}</a>
                             </h2>
                         </td>
                     </tr>
@@ -60,7 +60,7 @@
                     <tr>
                         <td>
                             <p class="text-base text-gray-700 pt-4 pb-10 leading-8 font-light">
-                                {{ article.date.format('Y-m-d H:i:s') }}
+                                {{ article.date.format('Y-m-d') }}
                             </p>
                         </td>
                     </tr>

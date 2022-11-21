@@ -100,11 +100,14 @@ class RefreshArticlesCommand extends Command
             $descHTML = $descCrawler->filterXPath('//a');
             $description = $descHTML->getNode(0)->textContent;
 
+            $link = $articleHTML->childNodes->item(0)->attributes[0]->value;
+
             print("----------------------------\r\n");
             print("title : $title\r\n");
             print("pict. : $picture\r\n");
             print("date  : $date\r\n");
             print("desc. : $description\r\n");
+            print("link. : $link\r\n");
             print("----------------------------\r\n");
 
             $article = new Article();
@@ -112,6 +115,7 @@ class RefreshArticlesCommand extends Command
             $article->setDescription($description);
             $article->setPicture($picture);
             $article->setDate(DateTime::createFromFormat("F j, Y", $date));
+            $article->setLink($link);
             $this->articleRepository->add($article, true);
             $countAdded++;
 

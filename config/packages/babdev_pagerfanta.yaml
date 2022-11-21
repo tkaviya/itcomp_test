@@ -1,0 +1,24 @@
+babdev_pagerfanta:
+  default_view: twig
+  default_twig_template: '@BabDevPagerfanta/default.html.twig'
+#babdev_pagerfanta:
+#  default_view: default
+#  default_twig_template: '@BabDevPagerfanta/default.html.twig'
+#babdev_pagerfanta:
+#  default_view: foundation6
+#  default_twig_template: '@BabDevPagerfanta/foundation6.html.twig'
+#babdev_pagerfanta:
+#  default_view: semantic_ui
+#  default_twig_template: '@BabDevPagerfanta/semantic_ui.html.twig'
+#babdev_pagerfanta:
+#  default_view: twitter_bootstrap
+#  default_twig_template: '@BabDevPagerfanta/twitter_bootstrap.html.twig'
+#babdev_pagerfanta:
+#  default_view: twitter_bootstrap3
+#  default_twig_template: '@BabDevPagerfanta/twitter_bootstrap3.html.twig'
+#babdev_pagerfanta:
+#  default_view: twitter_bootstrap4
+#  default_twig_template: '@BabDevPagerfanta/twitter_bootstrap4.html.twig'
+#babdev_pagerfanta:
+#  default_view: twitter_bootstrap5
+#  default_twig_template: '@BabDevPagerfanta/twitter_bootstrap5.html.twig'

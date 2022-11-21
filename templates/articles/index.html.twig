@@ -22,34 +22,50 @@
             </h1>
 
             <p class="font-light text-gray-500 italic">
-                Articles from https://new.pindula.com
+                Articles from <a target="_blank" href="https://news.pindula.com">https://news.pindula.com</a>
             </p>
         </div>
     </div>
 
-    <div class="md:grid lg:grid-cols-3 gap-20 w-4/5 mx-auto py-15 ">
+    <div class="articles-grid md:grid lg:grid-cols-3 gap-20 w-4/5 mx-auto py-15 ">
         <p>{{ pagerfanta(pager) }}</p>
         <!-- Review Item -->
         {% for article in pager %}
-            <p>----------------------------------------------------------</p>
+            <p>----------------------------------------------------------------------------------------------------------------------------------------</p>
             <div class="text-center pt-8 pb-4">
-                <img
-                        src="{{ article.picture }}"
-                        alt=""
-                        class="shadow-xl rounded-md"
-                />
 
-                <h2 class="text-gray-700 font-bold text-3xl py-2">
-                    {{ article.title }}
-                </h2>
+                <table style="padding: 10px">
+                    <tr>
+                        <td rowspan="3" style="padding: 10px">
+                            <img
+                                    src="{{ article.picture }}"
+                                    alt=""
+                                    class="shadow-xl rounded-md"
+                                    style="width: 150px"
+                            />
+                        </td>
+                        <td>
+                            <h2 class="text-gray-700 font-bold text-3xl py-2">
+                                {{ article.title }}
+                            </h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="text-base text-gray-700 pt-4 pb-10 leading-8 font-light">
+                                {{ article.description }}
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="text-base text-gray-700 pt-4 pb-10 leading-8 font-light">
+                                {{ article.date.format('Y-m-d H:i:s') }}
+                            </p>
+                        </td>
+                    </tr>
+                </table>
 
-                <p class="text-base text-gray-700 pt-4 pb-10 leading-8 font-light">
-                    {{ article.description }}
-                </p>
-
-                <p class="text-base text-gray-700 pt-4 pb-10 leading-8 font-light">
-                    {{ article.date.format('Y-m-d H:i:s') }}
-                </p>
 
             </div>
             <p></p>

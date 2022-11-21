@@ -3,6 +3,10 @@ FROM php:7.4.33-fpm-alpine3.15
 
 ENV PS1="\u@\h:\w\\$ "
 
+RUN curl -sL https://deb.nodesource.com/setup_16.x | sudo bash -
+
+RUN sudo apt-get install -y nodejs
+
 RUN apk update \
  && apk add --no-cache $PHPIZE_DEPS \
     bash \

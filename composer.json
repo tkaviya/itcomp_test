@@ -28,8 +28,7 @@
         "symfony/yaml": "5.4.*",
         "twig/extra-bundle": "^2.12|^3.0",
         "twig/twig": "^2.12|^3.0",
-        "ext-curl": "*",
-        "ext-pthreads": "*"
+        "ext-curl": "*"
     },
     "config": {
         "allow-plugins": {
